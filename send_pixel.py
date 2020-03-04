@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import sys
 
 
 def get_requests():
@@ -32,17 +33,22 @@ def main():
         r = requests.post(url=url, json=a, headers=header)
         j = json.loads(r.content)
         print(j)
-        if j["waitSeconds"] < 45 and j['success'] is True:
-            print('again')
-            time.sleep(1)
-            continue
         print(a)
+        try:
+            if j["waitSeconds"] < 45 and j['success'] is True:
+                print('again')
+                time.sleep(1)
+                continue
+        except KeyError:
+            input('need to fix captcha issue by manually placing a pixel.')
+        print('delay')
         time.sleep(9)
 
 
 if __name__ == '__main__':
     # ensure get_requests for loop ends right
-    tr_cord, bl_cord = (1744, -10535), (1758, -10528)
-    color_id = 7
+    tr_cord, bl_cord = (1663, -10537), (1975, -10536)
+    color_id = 12
     url = 'https://pixelplanet.fun/api/pixel'
     main()
+    print('done with cords.')
