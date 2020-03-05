@@ -2,6 +2,7 @@ import requests
 import json
 import time
 import sys
+import os
 
 
 def generate_requests_data() -> list:
@@ -28,6 +29,8 @@ def execute_requests(cookie=None):
     if cookie is None:
         cookie = {"__cfduid": "d20cf0dfd3544064b38fe17dfcc052f7b1554679407", "pixelplanet.session": "s:aqATkVdgw8M1ARwUOLYQon1lvbDskaBU.Jels0pZiwOtNP4S6odF1E9BrTmOVmv4wK7kwLODDhn4"}
 
+    global url
+
     for a in generate_requests_data():
         # goes through each request and sends it and wait based on response
         r = requests.post(url=url, json=a, cookies=cookie)
@@ -46,36 +49,13 @@ def execute_requests(cookie=None):
         time.sleep(9)
 
 
+def show_help():
+    pass
+
+
+
 def main():
-    # print(generate_requests())
-    # ses = requests.session()
-    header = {'Host': 'pixelplanet.fun',
-              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0",
-              "Accept": "*/*",
-              "Accept-Language": "en-US,en;q=0.5",
-              "Accept-Encoding": "gzip, deflate, br",
-              "Referer": "https://pixelplanet.fun/",
-              "Content-Type": "application/json",
-              "Origin": "https://pixelplanet.fun",
-              "Content-Length": "50",
-              "Connection": "keep-alive",
-              'Cookie': "__cfduid=d20cf0dfd3544064b38fe17dfcc052f7b1554679407; pixelplanet.session=s%3AaqATkVdgw8M1ARwUOLYQon1lvbDskaBU.Jels0pZiwOtNP4S6odF1E9BrTmOVmv4wK7kwLODDhn4"}
-    cookie = {"__cfduid": "d20cf0dfd3544064b38fe17dfcc052f7b1554679407", "pixelplanet.session": "s:aqATkVdgw8M1ARwUOLYQon1lvbDskaBU.Jels0pZiwOtNP4S6odF1E9BrTmOVmv4wK7kwLODDhn4"}
-    # ses.get(url=url, cookies=cookies)
-    for a in generate_requests_data():
-        r = requests.post(url=url, json=a, cookies=cookie)
-        j = json.loads(r.content)
-        print(j)
-        print(a)
-        try:
-            if j["waitSeconds"] < 45 and j['success'] is True:
-                print('again')
-                time.sleep(1)
-                continue
-        except KeyError:
-            input('need to fix captcha issue by manually placing a pixel.')
-        print('delay')
-        time.sleep(9)
+    execute_requests()
 
 
 if __name__ == '__main__':
@@ -83,5 +63,15 @@ if __name__ == '__main__':
     tr_cord, bl_cord = (1764, -10534), (1768, -10531)
     color_id = 12
     url = 'https://pixelplanet.fun/api/pixel'
+    args = sys.argv
+    # can now take arguments from command line
+    for num_a, a in enumerate(args[1:]):
+        if a == '-h' or a == 'help' or a == '-help':
+            show_help()
+        elif a == '-cords':
+            tr_cord = eval(args[num_a + 1])
+            bl_cord = eval(args[num_a + 2])
+        elif a == '-id':
+            color_id = int(args[num_a + 1])
     main()
     print('done with cords.')
