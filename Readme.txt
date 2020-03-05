@@ -1,6 +1,6 @@
 Places pixels in the background. Still very WIP even though it works.
 
-ideas:
+ideas that may still need to implemented:
 make captcha more noticeable such as sound, bring site to front.
 run from cmd command
 get user data from nearby text file
