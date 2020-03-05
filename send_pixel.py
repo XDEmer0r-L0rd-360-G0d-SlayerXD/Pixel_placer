@@ -53,9 +53,8 @@ def show_help():
     pass
 
 
-
 def main():
-    execute_requests()
+    execute_requests(cookie)
 
 
 if __name__ == '__main__':
@@ -64,14 +63,20 @@ if __name__ == '__main__':
     color_id = 12
     url = 'https://pixelplanet.fun/api/pixel'
     args = sys.argv
+    cookie = None
     # can now take arguments from command line
     for num_a, a in enumerate(args[1:]):
         if a == '-h' or a == 'help' or a == '-help':
+            print('Help not added yet, ask It#4001')
             show_help()
         elif a == '-cords':
             tr_cord = eval(args[num_a + 1])
             bl_cord = eval(args[num_a + 2])
         elif a == '-id':
             color_id = int(args[num_a + 1])
+        elif a == '-url':
+            url = args[num_a + 1]
+        elif a == '-cookies' or a == '-c':
+            cookie = args[num_a + 1]
     main()
     print('done with cords.')
