@@ -61,6 +61,10 @@ Currently the only way to control it is via command line arguments
 -cookie "{'__cfduid': 'random', 'pixelplanet.session': 'random'}" it needs this format, just replace the randoms with the cookie data found in the header of the post request. Each word needs to be in quotes, and the whole object wraped in double quotes.
 all needed data can be found in a post request that sends a pixel.
 idk for chrome, but in firefox > f12 > network I can click on a pixel post request, and in parameters is color_id as cr(?). It also has cordinates, but they can be seen on screen where you hover.
+
+Examples:
+python Start_me.py -cords "(-15322, -13138)" "(-15317, -13134)" -id 7
+will try to draw the black rectangle with no login
         ''')
     os.system('notepad.exe help.txt')
     pass
