@@ -26,8 +26,8 @@ def execute_requests(cookie=None):
     :param cookie: user data, currently set to me for debugging
     :return: None
     """
-    if cookie is None:
-        cookie = {"__cfduid": "d20cf0dfd3544064b38fe17dfcc052f7b1554679407", "pixelplanet.session": "s:aqATkVdgw8M1ARwUOLYQon1lvbDskaBU.Jels0pZiwOtNP4S6odF1E9BrTmOVmv4wK7kwLODDhn4"}
+    # if cookie is None:
+    #     cookie = {"__cfduid": "d20cf0dfd3544064b38fe17dfcc052f7b1554679407", "pixelplanet.session": "s:aqATkVdgw8M1ARwUOLYQon1lvbDskaBU.Jels0pZiwOtNP4S6odF1E9BrTmOVmv4wK7kwLODDhn4"}
 
     global url
 
