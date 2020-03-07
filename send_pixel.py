@@ -50,6 +50,19 @@ def execute_requests(cookie=None):
 
 
 def show_help():
+    with open('help.txt', 'w') as f:
+        f.write('''
+If you see this, then you at most, you have downloaded requests and lxml for python, and these files from github with my updater.
+This program will draw all pixel in a rectangle as a single color.
+due to a lack of checking, it will draw a pixel the same color successfully and get the time use for it
+Currently the only way to control it is via command line arguments
+-cords "(trx, try)" "(blx, bly)" where tr is top right and bl is bottom left
+-id color_id
+-cookie "{'__cfduid': 'random', 'pixelplanet.session': 'random'}" it needs this format, just replace the randoms with the cookie data found in the header of the post request. Each word needs to be in quotes, and the whole object wraped in double quotes.
+all needed data can be found in a post request that sends a pixel.
+idk for chrome, but in firefox > f12 > network I can click on a pixel post request, and in parameters is color_id as cr(?). It also has cordinates, but they can be seen on screen where you hover.
+        ''')
+    os.system('notepad.exe help.txt')
     pass
 
 
@@ -67,12 +80,13 @@ if __name__ == '__main__':
     # can now take arguments from command line
     for num_a, a in enumerate(args[1:]):
         if a == '-h' or a == 'help' or a == '-help':
-            print("use -cords '(trx, try)' '(blx, bly)' -id color_id -cookie '{__cfduid': 'random', 'pixelplanet.session': 'random'")
+            print("""use -cords "(trx, try)" "(blx, bly)" -id color_id -cookie "{'__cfduid': 'random', 'pixelplanet.session': 'random'}" """)
             print('Help not added yet, ask It#4001')
             show_help()
+            exit()
         elif a == '-version':
             # todo update this
-            print('v1.0')
+            print('v1.01')
             exit()
         elif a == '-cords':
             tr_cord = eval(args[num_a + 1])

@@ -32,7 +32,7 @@ def ensure_minimum():
 
 
 def main():
-    given_args = sys.argv
+    given_args = sys.argv[1:]
     # dl updater
     if not os.path.isfile('Updater.py'):
         ensure_minimum()
@@ -41,7 +41,7 @@ def main():
     if '-su' not in given_args:
         # supress update = su
         os.system('python Updater.py -t send_pixel.py -r https://github.com/XDEmer0r-L0rd-360-G0d-SlayerXD/Pixel_placer/releases')
-    run_pixel_command = 'python ' + ' '.join(given_args)
+    run_pixel_command = 'python ' + 'send_pixel.py' + ' '.join(given_args)
     print('executing', run_pixel_command)
     exit()
     os.system(run_pixel_command)
