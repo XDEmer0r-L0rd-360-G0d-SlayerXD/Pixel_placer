@@ -78,7 +78,7 @@ if __name__ == '__main__':
     args = sys.argv
     cookie = None
     # can now take arguments from command line
-    for num_a, a in enumerate(args[1:]):
+    for num_a, a in enumerate(args):
         if a == '-h' or a == 'help' or a == '-help':
             print("""use -cords "(trx, try)" "(blx, bly)" -id color_id -cookie "{'__cfduid': 'random', 'pixelplanet.session': 'random'}" """)
             print('Help not added yet, ask It#4001')
